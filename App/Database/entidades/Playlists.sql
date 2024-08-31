@@ -1,0 +1,16 @@
+CREATE TABLE Playlists
+(
+    Id INT(10) NOT NULL,
+    Nome VARCHAR(150) NOT NULL,
+    IdUsuario INT(10) NOT NULL,
+    DataCriacao DATETIME NOT NULL
+);
+
+ALTER TABLE Playlists
+CHANGE COLUMN Id Id INT(10) AUTO_INCREMENT NOT NULL,
+ADD CONSTRAINT Pk_Playlists
+PRIMARY KEY(Id);
+
+ALTER TABLE Playlists
+ADD CONSTRAINT Fk_Playlists_Usuarios
+FOREIGN KEY(IdUsuario) REFERENCES Usuarios(Id);

@@ -1,0 +1,27 @@
+CREATE TABLE Musicas
+(
+    Id INT(10) NOT NULL,
+    Titulo VARCHAR(150) NOT NULL,
+    IdArtista INT(10) NOT NULL,
+    IdAlbum INT(10) NULL,
+    IdGenero INT(10) NOT NULL,
+    ArquivoAudio VARCHAR(255) NOT NULL,
+    DataLancamento DATETIME NULL
+);
+
+ALTER TABLE Musicas
+CHANGE COLUMN Id Id INT(10) AUTO_INCREMENT NOT NULL,
+ADD CONSTRAINT Pk_Musicas
+PRIMARY KEY(Id);
+
+ALTER TABLE Musicas
+ADD CONSTRAINT Fk_Musicas_Artistas
+FOREIGN KEY(IdArtista) REFERENCES Artistas(Id);
+
+ALTER TABLE Musicas
+ADD CONSTRAINT Fk_Musicas_Albuns
+FOREIGN KEY(IdAlbum) REFERENCES Albuns(Id);
+
+ALTER TABLE Musicas
+ADD CONSTRAINT Fk_Musicas_Generos
+FOREIGN KEY(IdGenero) REFERENCES Generos(Id);
